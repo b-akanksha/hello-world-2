@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 import { Box } from "@mui/material";
 import colors from "../../utils/colors";
 import Header from "../Header/Header";
+import AboutMe from "../AboutMe/AboutMe";
 const useStyle = (theme) => ({
   layout: {
     padding: "16px",
@@ -15,6 +15,7 @@ function Layout() {
   return (
     <Box sx={classes.layout}>
       <Header />
+      <AboutMe />
     </Box>
   );
 }

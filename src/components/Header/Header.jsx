@@ -19,7 +19,7 @@ const useStyle = (theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     borderRadius: 2,
-    border: `2px solid ${colors[theme].border}`,
+    border: `1px solid ${colors[theme].border}`,
   },
   avatarContainer: {
     display: "flex",
@@ -41,7 +41,7 @@ const useStyle = (theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     borderRadius: "50%",
-    border: `3px solid ${colors[theme === "light" ? "dark" : "light"].border}`,
+    border: `1px solid ${colors[theme].border}`,
     "@media (max-width: 600px)": {
       marginBottom: "16px",
     },
@@ -107,7 +107,7 @@ function Header() {
   };
 
   return (
-    <Box>
+    <Box borderBottom={`1px solid ${colors[theme].border}`} paddingBottom={2}>
       <Box position="relative" sx={classes.headerBox}>
         <Box sx={classes.headerImg} />
         <Box sx={classes.avatarContainer}>
@@ -135,8 +135,8 @@ function Header() {
           </Box>
         </Box>
       </Box>
-      <Box>
-        <Typography variant="h5" sx={classes.texts}>
+      <Box marginX={{ xs: 0, md: 2 }}>
+        <Typography variant="h5" marginY={1} sx={classes.texts}>
           Experience
         </Typography>
         <Typography variant="body1" sx={classes.texts}>
