@@ -1,7 +1,6 @@
 import { Box, Chip, IconButton, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import React from "react";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
@@ -20,13 +19,13 @@ const useStyle = (theme) => ({
     flexWrap: "wrap",
   },
   info: {
-    flexBasis: { xs: "100%", md: "60%" },
+    flexBasis: { xs: "100%", md: "65%" },
     marginX: { xs: 0, md: 2 },
     paddingRight: { xs: 0, md: 2 },
     borderRight: { xs: "none", md: `1px solid ${colors[theme].border}` },
   },
   metaData: {
-    flexBasis: { xs: "100%", md: "30%" },
+    flexBasis: { xs: "100%", md: "25%" },
     display: "flex",
     flexWrap: "wrap",
     marginX: { xs: 0, md: 0, lg: 2 },
@@ -34,7 +33,7 @@ const useStyle = (theme) => ({
   },
   metaBox: {
     width: { xs: "100%", md: "100%", lg: "50%" },
-    marginY: { xs: 1, md: 1, lg: 0 },
+    marginY: 1,
   },
   metaInfo: {
     display: "flex",
@@ -190,29 +189,23 @@ function AboutMe() {
               </Typography>
             </Box>
           </Box>
-          <Box sx={classes.metaBox}>
-            <Typography variant="subtitle1" sx={classes.texts}>
-              CV
-            </Typography>
+          <Box
+            sx={{ ...classes.metaBox, cursor: "pointer" }}
+            onClick={() =>
+              openPage(
+                "https://drive.google.com/file/d/1INlaxeSjJ-dccUKclEcicJ_HkhFonEq9/view?usp=sharing",
+              )
+            }
+          >
             <Box sx={classes.metaInfo}>
               <PictureAsPdfIcon sx={classes.icon} />
               <Typography
                 variant="body2"
-                marginX={1}
-                sx={{ ...classes.texts, ...classes.boldText }}
+                marginLeft={1}
+                sx={{ ...classes.texts, ...classes.boldText, ...classes.icon }}
               >
                 akanksha-resume.pdf{" "}
               </Typography>
-              <IconButton
-                sx={classes.button}
-                onClick={() =>
-                  openPage(
-                    "https://drive.google.com/file/d/1INlaxeSjJ-dccUKclEcicJ_HkhFonEq9/view?usp=sharing",
-                  )
-                }
-              >
-                <ArrowOutwardIcon />
-              </IconButton>
             </Box>
           </Box>
         </Box>
