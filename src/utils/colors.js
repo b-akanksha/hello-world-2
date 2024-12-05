@@ -18,22 +18,22 @@ const colors = {
     border: "#a8dadc",
   },
   dark: {
-    background: "#2b2d42",
+    background: "#1b263b",
     section: {
-      color: "#3a3f58",
-      hover: "#43496c",
+      color: "#2c3e50",
+      hover: "#34495e",
     },
     text: {
-      primary: "#e9ecef",
-      hover: "#ffba08",
+      primary: "#d1d9e6",
+      hover: "#a8dadc",
     },
     accent: {
-      primary: "#d90429",
+      primary: "#457b9d",
       primaryText: "#ffffff",
-      primaryHover: "#9c0320",
-      primaryTextHover: "#2b2d42",
+      primaryHover: "#2c6476",
+      primaryTextHover: "#1b263b",
     },
-    border: "#8d99ae",
+    border: "#3a506b",
   },
 };
 

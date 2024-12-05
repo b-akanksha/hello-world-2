@@ -228,7 +228,10 @@ function AboutMe() {
                   <Box sx={classes.cardContainer}>
                     {React.Children.toArray(
                       skill.skills.map((tech) => (
-                        <Chip label={`#${tech.replace(/\s+/g, '')}`} sx={classes.chip} />
+                        <Chip
+                          label={`#${tech.replace(/\s+/g, "")}`}
+                          sx={classes.chip}
+                        />
                       )),
                     )}
                   </Box>
