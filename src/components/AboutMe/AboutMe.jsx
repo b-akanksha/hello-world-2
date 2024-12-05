@@ -1,11 +1,15 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Chip, IconButton, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import MailIcon from "@mui/icons-material/Mail";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import React from "react";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import GroupsIcon from "@mui/icons-material/Groups";
 import CodeIcon from "@mui/icons-material/Code";
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import BugReportIcon from "@mui/icons-material/BugReport";
+import BuildIcon from "@mui/icons-material/Build";
 
 const useStyle = (theme) => ({
   aboutme: {
@@ -71,11 +75,24 @@ const useStyle = (theme) => ({
     marginX: 1,
     marginY: 2,
     padding: 1,
-    width: { xs: "100%", md: "25%" },
+    width: { xs: "100%", md: "30%" },
 
     "&:hover": {
       background: colors[theme].section.hover,
     },
+  },
+  cardContent: {
+    display: "flex",
+    marginY: 2,
+    justifyContent: "normal",
+  },
+  chip: {
+    background: colors[theme].section.color,
+    border: `1px solid ${colors[theme].border}`,
+    borderRadius: 1,
+    margin: 1,
+    padding: 1,
+    color: colors[theme].text.primary,
   },
 });
 
@@ -83,16 +100,49 @@ function AboutMe() {
   const { theme } = useSelector((state) => state.theme);
   const classes = useStyle(theme);
 
-  const handleContact = () => {
-    const email = "akanksha.chandrashekar@gmail.com";
-    const subject = "Hello there!";
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-    window.location.href = mailtoLink;
-  };
-
   const openPage = (page) => {
     window.open(page, "_blank");
   };
+
+  const skills = [
+    {
+      skill: "Critical Thinking & Problem Solving",
+      description: "Analyzing challenges and finding effective solutions.",
+      icon: <LightbulbIcon sx={classes.icon} fontSize="large" />,
+      skills: ["Problem Solving", "Agility"],
+    },
+    {
+      skill: "Teamwork & Communication",
+      description: "Collaborating effectively and sharing ideas clearly.",
+      icon: <GroupsIcon sx={classes.icon} fontSize="large" />,
+      skills: ["Collaboration", "Communication"],
+    },
+    {
+      skill: "Time Management & Learning",
+      description: "Balancing priorities and continuously improving.",
+      icon: <ScheduleIcon sx={classes.icon} fontSize="large" />,
+      skills: ["Time Management", "Continuous Learning"],
+    },
+    {
+      skill: "Frontend Development",
+      description: "Creating responsive and user-friendly interfaces.",
+      icon: <CodeIcon sx={classes.icon} fontSize="large" />,
+      skills: ["JavaScript", "HTML5", "CSS", "React.js", "Redux"],
+    },
+    {
+      skill: "Testing and Debugging",
+      description: "Ensuring code quality and application reliability.",
+      icon: <BugReportIcon sx={classes.icon} fontSize="large" />,
+      skills: ["Jest", "React Testing Library", "MABL"],
+    },
+    {
+      skill: "Tools and Automation",
+      description: "Streamlining workflows with modern tools.",
+      icon: <BuildIcon sx={classes.icon} fontSize="large" />,
+      skills: ["Postman", "MABL"],
+    },
+  ];
+
   return (
     <Box sx={classes.aboutme}>
       <Box sx={classes.aboutMeBox}>
@@ -116,73 +166,51 @@ function AboutMe() {
         <Box sx={classes.metaData}>
           <Box sx={classes.metaBox}>
             <Typography variant="subtitle1" sx={classes.texts}>
-              Location
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ ...classes.texts, ...classes.boldText }}
-            >
-              🇮🇳 Udupi, India
-            </Typography>
-          </Box>
-          <Box sx={classes.metaBox}>
-            <Typography variant="subtitle1" sx={classes.texts}>
-              Github
+              Software Engineer, iCIMS India
             </Typography>
             <Box sx={classes.metaInfo}>
-              <GitHubIcon sx={classes.icon} />
               <Typography
                 variant="body2"
-                marginX={1}
                 sx={{ ...classes.texts, ...classes.boldText }}
               >
-                b-akanksha{" "}
+                March, 2023 - Present
               </Typography>
-              <IconButton
-                sx={classes.button}
-                onClick={() => openPage("https://github.com/b-akanksha")}
-              >
-                <ArrowOutwardIcon />
-              </IconButton>
             </Box>
           </Box>
           <Box sx={classes.metaBox}>
             <Typography variant="subtitle1" sx={classes.texts}>
-              Linkedin
+              Software Engineer, GlobalLogic India
             </Typography>
             <Box sx={classes.metaInfo}>
-              <LinkedInIcon sx={classes.icon} />
+              <Typography
+                variant="body2"
+                sx={{ ...classes.texts, ...classes.boldText }}
+              >
+                Dec, 2020 - March, 2023
+              </Typography>
+            </Box>
+          </Box>
+          <Box sx={classes.metaBox}>
+            <Typography variant="subtitle1" sx={classes.texts}>
+              CV
+            </Typography>
+            <Box sx={classes.metaInfo}>
+              <PictureAsPdfIcon sx={classes.icon} />
               <Typography
                 variant="body2"
                 marginX={1}
                 sx={{ ...classes.texts, ...classes.boldText }}
               >
-                c-akanksha{" "}
+                akanksha-resume.pdf{" "}
               </Typography>
               <IconButton
                 sx={classes.button}
                 onClick={() =>
-                  openPage("https://www.linkedin.com/in/c-akanksha")
+                  openPage(
+                    "https://drive.google.com/file/d/1INlaxeSjJ-dccUKclEcicJ_HkhFonEq9/view?usp=sharing",
+                  )
                 }
               >
-                <ArrowOutwardIcon />
-              </IconButton>
-            </Box>
-          </Box>
-          <Box sx={classes.metaBox}>
-            <Typography variant="subtitle1" sx={classes.texts}>
-              Email
-            </Typography>
-            <Box sx={classes.metaInfo}>
-              <MailIcon sx={classes.icon} />
-              <Typography
-                variant="body2"
-                marginX={1}
-                sx={{ ...classes.texts, ...classes.boldText }}
-              >
-                akanksha.chandrashekar{" "}
-              </Typography>
-              <IconButton sx={classes.button} onClick={handleContact}>
                 <ArrowOutwardIcon />
               </IconButton>
             </Box>
@@ -190,44 +218,33 @@ function AboutMe() {
         </Box>
       </Box>
       <Box sx={classes.cardContainer}>
-        <Box sx={classes.card}>
-          <Box sx={classes.cardContainer}>
-            <CodeIcon sx={classes.icon} fontSize="large" />
-            <Box marginX={2}>
-              <Typography
-                variant="body1"
-                sx={{ ...classes.texts, ...classes.boldText }}
-              >
-                Software Engineer
-              </Typography>
-              <Typography variant="subtitle2" sx={classes.texts}>
-                iCIMS India
-              </Typography>
+        {React.Children.toArray(
+          skills.map((skill) => (
+            <Box sx={classes.card}>
+              <Box sx={classes.cardContent}>
+                {skill.icon}
+                <Box marginX={2}>
+                  <Typography
+                    variant="body1"
+                    sx={{ ...classes.texts, ...classes.boldText }}
+                  >
+                    {skill.skill}
+                  </Typography>
+                  <Typography variant="caption" sx={classes.texts}>
+                    {skill.description}
+                  </Typography>
+                  <Box sx={classes.cardContainer}>
+                    {React.Children.toArray(
+                      skill.skills.map((tech) => (
+                        <Chip label={tech} sx={classes.chip} />
+                      )),
+                    )}
+                  </Box>
+                </Box>
+              </Box>
             </Box>
-          </Box>
-          <Typography variant="caption" sx={classes.texts}>
-            March, 2023 - Present
-          </Typography>
-        </Box>
-        <Box sx={classes.card}>
-          <Box sx={classes.cardContainer}>
-            <CodeIcon sx={classes.icon} fontSize="large" />
-            <Box marginX={2}>
-              <Typography
-                variant="body1"
-                sx={{ ...classes.texts, ...classes.boldText }}
-              >
-                Software Engineer
-              </Typography>
-              <Typography variant="subtitle2" sx={classes.texts}>
-                GlobalLogic India
-              </Typography>
-            </Box>
-          </Box>
-          <Typography variant="caption" sx={classes.texts}>
-            Dec, 2020 - March, 2023
-          </Typography>
-        </Box>
+          )),
+        )}
       </Box>
     </Box>
   );
