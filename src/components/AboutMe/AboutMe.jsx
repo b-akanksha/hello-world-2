@@ -88,9 +88,8 @@ const useStyle = (theme) => ({
   chip: {
     background: colors[theme].section.color,
     border: `1px solid ${colors[theme].border}`,
-    borderRadius: 1,
+    borderRadius: 2,
     margin: 1,
-    padding: 1,
     color: colors[theme].text.primary,
   },
 });
@@ -229,7 +228,7 @@ function AboutMe() {
                   <Box sx={classes.cardContainer}>
                     {React.Children.toArray(
                       skill.skills.map((tech) => (
-                        <Chip label={tech} sx={classes.chip} />
+                        <Chip label={`#${tech.replace(/\s+/g, '')}`} sx={classes.chip} />
                       )),
                     )}
                   </Box>
