@@ -15,11 +15,11 @@ const useStyle = (theme) => ({
     flexWrap: "wrap",
   },
   work: {
-    width: { sm: "100%", md: "40%", lg: "30%" },
+    width: { sm: "100%", sm: "45%", md: "45%", lg: "30%" },
     background: colors[theme].section.color,
     border: `1px solid ${colors[theme].border}`,
     borderRadius: 1,
-    marginX: { xs: 0, md: 1 },
+    marginX: { xs: 0, sm: 1, md: 1 },
     marginY: 2,
     padding: 1,
     "&:hover": {

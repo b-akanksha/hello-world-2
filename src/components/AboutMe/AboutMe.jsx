@@ -32,7 +32,7 @@ const useStyle = (theme) => ({
     marginY: 2,
   },
   metaBox: {
-    width: { xs: "100%", md: "100%", lg: "50%" },
+    width: { xs: "100%", sm: "50%", md: "50%", lg: "50%" },
     marginY: 1,
   },
   metaInfo: {
@@ -74,8 +74,7 @@ const useStyle = (theme) => ({
     marginX: 1,
     marginY: 2,
     padding: 1,
-    width: { xs: "100%", md: "30%" },
-
+    width: { xs: "100%", sm: "45%", md: "29%", lg: "30%" },
     "&:hover": {
       background: colors[theme].section.hover,
     },
@@ -89,7 +88,8 @@ const useStyle = (theme) => ({
     background: colors[theme].section.color,
     border: `1px solid ${colors[theme].border}`,
     borderRadius: 2,
-    margin: 1,
+    marginX: 1,
+    marginTop: 1,
     color: colors[theme].text.primary,
   },
 });
@@ -125,7 +125,7 @@ function AboutMe() {
       skill: "Frontend Development",
       description: "Creating responsive and user-friendly interfaces.",
       icon: <CodeIcon sx={classes.icon} fontSize="large" />,
-      skills: ["JavaScript", "HTML5", "CSS", "React.js", "Redux"],
+      skills: ["JS", "HTML5-CSS", "ReactJS"],
     },
     {
       skill: "Testing and Debugging",
