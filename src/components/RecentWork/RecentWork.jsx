@@ -32,6 +32,7 @@ function RecentWork() {
                 src={project.image}
                 onClick={() => openPage(project.link)}
                 style={classes.workImg}
+                alt={project.title}
               />
             </Box>
           )),
