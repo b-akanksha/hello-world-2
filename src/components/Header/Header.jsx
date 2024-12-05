@@ -2,7 +2,6 @@ import { Box, Button, Typography } from "@mui/material";
 import headerImg from "../../assets/header.png";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
-import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 import MessageIcon from "@mui/icons-material/Message";
 
 const useStyle = (theme) => ({
@@ -122,7 +121,6 @@ function Header() {
               </Typography>
             </Box>
             <Box sx={classes.actions}>
-              <ThemeSwitch />
               <Button
                 startIcon={<MessageIcon />}
                 sx={classes.contactButton}

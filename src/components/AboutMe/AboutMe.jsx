@@ -71,7 +71,7 @@ const useStyle = (theme) => ({
     marginX: 1,
     marginY: 2,
     padding: 1,
-    width: "25%",
+    width: { xs: "100%", md: "25%" },
 
     "&:hover": {
       background: colors[theme].section.hover,
