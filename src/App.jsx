@@ -13,11 +13,8 @@ function App() {
     const theme = isDarkMode ? "dark" : "light";
     dispatch(setTheme(theme));
   }, []);
-  return (
-    <>
-      <Layout />
-    </>
-  );
+
+  return <Layout />;
 }
 
 export default App;

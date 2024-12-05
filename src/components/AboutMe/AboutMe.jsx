@@ -1,6 +1,5 @@
-import { Box, Chip, IconButton, Typography } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import React from "react";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
@@ -9,94 +8,12 @@ import CodeIcon from "@mui/icons-material/Code";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import BugReportIcon from "@mui/icons-material/BugReport";
 import BuildIcon from "@mui/icons-material/Build";
-
-const useStyle = (theme) => ({
-  aboutme: {
-    marginY: 2,
-  },
-  aboutMeBox: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  info: {
-    flexBasis: { xs: "100%", md: "65%" },
-    marginX: { xs: 0, md: 2 },
-    paddingRight: { xs: 0, md: 2 },
-    borderRight: { xs: "none", md: `1px solid ${colors[theme].border}` },
-  },
-  metaData: {
-    flexBasis: { xs: "100%", md: "25%" },
-    display: "flex",
-    flexWrap: "wrap",
-    marginX: { xs: 0, md: 0, lg: 2 },
-    marginY: 2,
-  },
-  metaBox: {
-    width: { xs: "100%", sm: "50%", md: "50%", lg: "50%" },
-    marginY: 1,
-  },
-  metaInfo: {
-    display: "flex",
-    alignItems: "center",
-  },
-  texts: {
-    color: colors[theme].text.primary,
-  },
-  button: {
-    background: "transparent",
-    padding: 0,
-    "& svg": {
-      color: colors[theme].text.primary,
-      "&:hover": {
-        color: colors[theme].text.hover,
-      },
-    },
-  },
-  boldText: {
-    fontWeight: "500",
-  },
-  icon: {
-    color: colors[theme].text.primary,
-    "&:hover": {
-      color: colors[theme].text.hover,
-    },
-  },
-  cardContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-    marginY: 2,
-    justifyContent: "normal",
-  },
-  card: {
-    background: colors[theme].section.color,
-    border: `1px solid ${colors[theme].border}`,
-    borderRadius: 1,
-    marginX: 1,
-    marginY: 2,
-    padding: 1,
-    width: { xs: "100%", sm: "45%", md: "29%", lg: "30%" },
-    "&:hover": {
-      background: colors[theme].section.hover,
-    },
-  },
-  cardContent: {
-    display: "flex",
-    marginY: 2,
-    justifyContent: "normal",
-  },
-  chip: {
-    background: colors[theme].section.color,
-    border: `1px solid ${colors[theme].border}`,
-    borderRadius: 2,
-    marginX: 1,
-    marginTop: 1,
-    color: colors[theme].text.primary,
-  },
-});
+import data from "../../utils/data";
+import { useStyles } from "../../utils/styles";
 
 function AboutMe() {
   const { theme } = useSelector((state) => state.theme);
-  const classes = useStyle(theme);
+  const classes = useStyles(theme);
 
   const openPage = (page) => {
     window.open(page, "_blank");
@@ -125,7 +42,7 @@ function AboutMe() {
       skill: "Frontend Development",
       description: "Creating responsive and user-friendly interfaces.",
       icon: <CodeIcon sx={classes.icon} fontSize="large" />,
-      skills: ["JS", "HTML5-CSS", "ReactJS"],
+      skills: ["JS", "HTML5-CSS", "ReactJS", "Redux"],
     },
     {
       skill: "Testing and Debugging",
@@ -149,52 +66,30 @@ function AboutMe() {
             About Me
           </Typography>
           <Typography variant="body1" sx={classes.texts}>
-            Passionate and detail-oriented software engineer with 4 years of
-            experience in Front-End and BFF development, specializing in
-            creating efficient, scalable, and user-focused web applications.
-            Skilled in React.js, Redux, and accessibility-focused design, I
-            thrive on solving complex problems and delivering impactful
-            solutions. With a strong foundation in teamwork and continuous
-            learning, I aim to enhance user experiences through innovative and
-            reliable technology. Proud recipient of multiple accolades,
-            including 3rd place in the 2024 iCIMS Hackathon. Eager to make a
-            meaningful impact through my expertise and creativity.
+            {data.aboutMe.text}
           </Typography>
         </Box>
         <Box sx={classes.metaData}>
-          <Box sx={classes.metaBox}>
-            <Typography variant="subtitle1" sx={classes.texts}>
-              Software Engineer, iCIMS India
-            </Typography>
-            <Box sx={classes.metaInfo}>
-              <Typography
-                variant="body2"
-                sx={{ ...classes.texts, ...classes.boldText }}
-              >
-                March, 2023 - Present
-              </Typography>
-            </Box>
-          </Box>
-          <Box sx={classes.metaBox}>
-            <Typography variant="subtitle1" sx={classes.texts}>
-              Software Engineer, GlobalLogic India
-            </Typography>
-            <Box sx={classes.metaInfo}>
-              <Typography
-                variant="body2"
-                sx={{ ...classes.texts, ...classes.boldText }}
-              >
-                Dec, 2020 - March, 2023
-              </Typography>
-            </Box>
-          </Box>
+          {React.Children.toArray(
+            data.experiences.map((exp) => (
+              <Box sx={classes.metaBox}>
+                <Typography variant="subtitle1" sx={classes.texts}>
+                  {exp.title}
+                </Typography>
+                <Box sx={classes.metaInfo}>
+                  <Typography
+                    variant="body2"
+                    sx={{ ...classes.texts, ...classes.boldText }}
+                  >
+                    {exp.duration}
+                  </Typography>
+                </Box>
+              </Box>
+            )),
+          )}
           <Box
             sx={{ ...classes.metaBox, cursor: "pointer" }}
-            onClick={() =>
-              openPage(
-                "https://drive.google.com/file/d/1INlaxeSjJ-dccUKclEcicJ_HkhFonEq9/view?usp=sharing",
-              )
-            }
+            onClick={() => openPage(data.cv.link)}
           >
             <Box sx={classes.metaInfo}>
               <PictureAsPdfIcon sx={classes.icon} />
@@ -203,7 +98,7 @@ function AboutMe() {
                 marginLeft={1}
                 sx={{ ...classes.texts, ...classes.boldText, ...classes.icon }}
               >
-                akanksha-resume.pdf{" "}
+                {data.cv.name}{" "}
               </Typography>
             </Box>
           </Box>
@@ -229,6 +124,7 @@ function AboutMe() {
                     {React.Children.toArray(
                       skill.skills.map((tech) => (
                         <Chip
+                          size="small"
                           label={`#${tech.replace(/\s+/g, "")}`}
                           sx={classes.chip}
                         />
